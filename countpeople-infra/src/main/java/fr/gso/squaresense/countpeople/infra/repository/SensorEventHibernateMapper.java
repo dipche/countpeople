@@ -8,8 +8,8 @@ public class SensorEventHibernateMapper {
     public static SensorEvent fromSensorEventHibernate(SensorEventHibernate sensorEventHibernate) {
         return new SensorEvent(sensorEventHibernate.id,
                 sensorEventHibernate.name,
-                sensorEventHibernate.peopleOut,
                 sensorEventHibernate.peopleIn,
+                sensorEventHibernate.peopleOut,
                 sensorEventHibernate.eventDate);
     }
 

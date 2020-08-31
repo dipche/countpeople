@@ -1,5 +1,6 @@
 package fr.gso.squaresense.countpeople.infra.repository;
 
+import fr.gso.squaresense.countpeople.domain.PeopleStock;
 import fr.gso.squaresense.countpeople.domain.SensorEvent;
 import fr.gso.squaresense.countpeople.infra.hibernate.SensorEventHibernate;
 import fr.gso.squaresense.countpeople.infra.hibernate.SensorEventHibernateRepository;
@@ -9,17 +10,13 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+
 public class SensorEventRepositoryImpl implements SensorEventRepository {
 
     private SensorEventHibernateRepository sensorEventHibernateRepository;
 
     public SensorEventRepositoryImpl(SensorEventHibernateRepository sensorEventHibernateRepository) {
         this.sensorEventHibernateRepository = sensorEventHibernateRepository;
-    }
-
-    @Override
-    public List<SensorEvent> readEvents() {
-        return null;
     }
 
     @Override
@@ -36,15 +33,15 @@ public class SensorEventRepositoryImpl implements SensorEventRepository {
     }
 
     @Override
-    public Long readPeopleStock() {
+    public PeopleStock readPeopleStock() {
         List<SensorEventHibernate> sensorEventsHibernate = (List<SensorEventHibernate>) this.sensorEventHibernateRepository.findAll();
-        return computePeopleStock(sensorEventsHibernate);
+        return new PeopleStock(computePeopleStock(sensorEventsHibernate));
     }
 
     @Override
-    public Long readPeopleStockAtInstant(LocalDateTime dateTime) {
-        List<SensorEventHibernate> sensorEventsHibernate = this.sensorEventHibernateRepository.findByEventDate(dateTime);
-        return computePeopleStock(sensorEventsHibernate);
+    public PeopleStock readPeopleStockAtInstant(LocalDateTime dateTime) {
+        List<SensorEventHibernate> sensorEventsHibernate = this.sensorEventHibernateRepository.findByEventDateLessThanEqual(dateTime);
+        return new PeopleStock(computePeopleStock(sensorEventsHibernate));
     }
 
 

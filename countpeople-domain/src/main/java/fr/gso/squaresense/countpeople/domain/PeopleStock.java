@@ -1,10 +1,10 @@
-package fr.gso.squaresense.countpeople.presentation;
+package fr.gso.squaresense.countpeople.domain;
 
-public class PeopleStockResponse {
+public class PeopleStock {
 
     private Long peopleStock;
 
-    public PeopleStockResponse(Long peopleStock) {
+    public PeopleStock(Long peopleStock) {
         this.peopleStock = peopleStock;
     }
 

@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface SensorEventHibernateRepository extends CrudRepository<SensorEventHibernate, Long> {
-    List<SensorEventHibernate> findByEventDate(LocalDateTime eventDate);
+    List<SensorEventHibernate> findByEventDateLessThanEqual(LocalDateTime eventDate);
 }

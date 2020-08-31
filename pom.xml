@@ -29,8 +29,5 @@
         <module>countpeople-infra</module>
     </modules>
 
-    <dependencyManagement>
-    </dependencyManagement>
-
 
 </project>

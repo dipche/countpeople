@@ -1,8 +1,6 @@
 package fr.gso.squaresense.countpeople.domain;
 
-import java.time.Instant;
 import java.time.LocalDateTime;
-import java.util.TimeZone;
 
 public class SensorEvent {
 
@@ -16,18 +14,18 @@ public class SensorEvent {
 
     private LocalDateTime eventDateTime;
 
-    public SensorEvent(String sensorName, Long peopleOut, Long peopleIn, String eventDateTime) {
+    public SensorEvent(String sensorName, Long peopleIn, Long peopleOut, LocalDateTime eventDateTime) {
         this.sensorName = sensorName;
-        this.peopleOut = peopleOut;
         this.peopleIn = peopleIn;
-        this.eventDateTime = timeStampToLocalDate(eventDateTime);
+        this.peopleOut = peopleOut;
+        this.eventDateTime = eventDateTime;
     }
 
-    public SensorEvent(Long id, String sensorName, Long peopleOut, Long peopleIn, LocalDateTime eventDateTime) {
+    public SensorEvent(Long id, String sensorName, Long peopleIn, Long peopleOut, LocalDateTime eventDateTime) {
         this.id = id;
         this.sensorName = sensorName;
-        this.peopleOut = peopleOut;
         this.peopleIn = peopleIn;
+        this.peopleOut = peopleOut;
         this.eventDateTime = eventDateTime;
     }
 
@@ -51,9 +49,4 @@ public class SensorEvent {
         return id;
     }
 
-
-    private LocalDateTime timeStampToLocalDate(String eventDateTime) {
-        return LocalDateTime.ofInstant(Instant.parse(eventDateTime), TimeZone
-                .getDefault().toZoneId());
-    }
 }

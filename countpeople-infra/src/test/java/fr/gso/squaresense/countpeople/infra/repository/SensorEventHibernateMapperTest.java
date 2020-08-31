@@ -38,7 +38,7 @@ public class SensorEventHibernateMapperTest {
 
     @Test
     public void fromSensorEvent() {
-        SensorEvent sensorEvent = new SensorEvent(ID,NAME,PEOPLE_OUT,PEOPLE_IN,EVENT_DATE);
+        SensorEvent sensorEvent = new SensorEvent(ID,NAME,PEOPLE_IN,PEOPLE_OUT,EVENT_DATE);
 
         SensorEventHibernate sensorEventHibernate = SensorEventHibernateMapper.fromSensorEvent(sensorEvent);
 
@@ -51,7 +51,7 @@ public class SensorEventHibernateMapperTest {
 
     @Test
     public void mapFields() {
-        SensorEvent sensorEvent = new SensorEvent(ID,NAME,PEOPLE_OUT,PEOPLE_IN,EVENT_DATE);
+        SensorEvent sensorEvent = new SensorEvent(ID,NAME,PEOPLE_IN,PEOPLE_OUT,EVENT_DATE);
 
         SensorEventHibernate sensorEventHibernate = new SensorEventHibernate();
 
